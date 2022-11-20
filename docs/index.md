@@ -14,7 +14,7 @@ hero:
       link: /blog/guide
     - theme: alt
       text: View on GitHub
-      link: https://github.com/vuejs/vitepress
+      link: https://github.com/NftTopBest/Web3VitePress
 
 features:
   - title: "Your markdown pin on to IPFS"

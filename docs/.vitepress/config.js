@@ -8,13 +8,13 @@ export default {
   themeConfig: {
     nav: [
       { text: 'Blog', link: '/blog',  activeMatch: '/config/' },
-      { text: 'Configs', link: '/configs' },
     ],
     sidebar: [
       {
         text: 'Blog',
         items: [
           { text: 'Getting Started', link: '/blog/getting-started' },
+          { text: 'Guide', link: '/blog/guide' },
         ]
       }
     ],
