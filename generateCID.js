@@ -55,7 +55,7 @@ const main = async () => {
       image,
     };
   }));
-  blogsArr = blogsArr.filter(item => item.CID)
+  blogsArr = blogsArr.filter(item => item.metadataCID)
 
   fs.writeFileSync('./data.json', JSON.stringify(blogsArr), 'utf-8');
 }

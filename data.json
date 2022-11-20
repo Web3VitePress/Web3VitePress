@@ -1,17 +1,1 @@
-[
-  {
-    "nftCID": "bafkreiha3y365mn3hddgehwutw2mkxnfyayenab432imw2ev6kf67m6nzy",
-    "metadata": {
-      "name": "Guide you to create a NFT for your blog",
-      "description": "The article will guide you to make your blog to be a NFT that content store on IPFS.Step. 1: Write your blogCreate your new blog articl in the blog folder.Step. 2: Generate blog IPFS CIDnode generateCID.jsThis command will publish your blog article on to IPFS and auto generate new blog article's CID and store them into the data.json.You can find your blog article's CID and copy it into your article's frontmatter field",
-      "image": "bafkreicp4smgidzdwbc7hazo43dvnopxmwlajjjcjvsfl574d5pq5vd64e",
-      "properties": {
-        "contentCID": "bafkreiex7aahucycag35k7ejx2vnqpl7teda4jrjkhwvga4ttgljqrvn64"
-      }
-    },
-    "CID": "yyy",
-    "name": "Guide you to create a NFT for your blog",
-    "description": "The article will guide you to make your blog to be a NFT that content store on IPFS.Step. 1: Write your blogCreate your new blog articl in the blog folder.Step. 2: Generate blog IPFS CIDnode generateCID.jsThis command will publish your blog article on to IPFS and auto generate new blog article's CID and store them into the data.json.You can find your blog article's CID and copy it into your article's frontmatter field",
-    "image": "bafkreicp4smgidzdwbc7hazo43dvnopxmwlajjjcjvsfl574d5pq5vd64e"
-  }
-]
+[{"metadataCID":"bafkreig2gq22b3obxbf777lkwo3hrsuikrujtkesralkmejecaquokdf3i","metadata":{"name":"Guide you to create a NFT for your blog","description":"The article will guide you to make your blog to be a NFT that content store on IPFS.Step. 1: Write your blogCreate your new blog articl in the blog folder.Step. 2: Generate blog IPFS CIDnode generateCID.jsThis command will publish your blog article on to IPFS and auto generate new blog article's CID and store them into the data.json.You can find your blog article's CID and copy it into your article's frontmatter field","image":"bafkreicp4smgidzdwbc7hazo43dvnopxmwlajjjcjvsfl574d5pq5vd64e","properties":{"contentCID":"bafkreifwmjpx2gce2gkr6windpzwtmvxhv5zocae4iashy4euc5ahrgpsy"}},"name":"Guide you to create a NFT for your blog","description":"The article will guide you to make your blog to be a NFT that content store on IPFS.Step. 1: Write your blogCreate your new blog articl in the blog folder.Step. 2: Generate blog IPFS CIDnode generateCID.jsThis command will publish your blog article on to IPFS and auto generate new blog article's CID and store them into the data.json.You can find your blog article's CID and copy it into your article's frontmatter field","image":"bafkreicp4smgidzdwbc7hazo43dvnopxmwlajjjcjvsfl574d5pq5vd64e"}]
