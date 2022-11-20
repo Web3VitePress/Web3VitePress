@@ -7,7 +7,9 @@ const { Layout } = DefaultTheme
 <template>
   <Layout>
     <template #aside-outline-after>
-      <Web3 />
+      <ClientOnly>
+        <Web3 />
+      </ClientOnly>
     </template>
   </Layout>
 </template>
