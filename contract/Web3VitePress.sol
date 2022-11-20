@@ -32,6 +32,67 @@ contract Web3VitePress is ERC1155, Ownable, Pausable, ERC1155Supply {
     mapping(address => string) public userProfileMap; // userAddress => userProfileCID
     address[] public userProfileAddressList;
 
+    function createToken(
+        uint256 basicPrice,
+        uint256 inviteCommission,
+        string memory metadataCID
+    ) public payable whenNotPaused {
+        require(bytes(metadataCID).length > 0, "metadataCID is empty");
+        require(
+            inviteCommission <= 1000,
+            "inviteCommission must smaller than 10%"
+        );
+        require(
+            msg.value >= createTokenPrice,
+            "insufficient funds for createToken"
+        );
+
+        address createdBy = _msgSender();
+
+        uint256 tokenId = tokenIdCounter.current();
+        tokenIdCounter.increment();
+
+        tokenURIMap[tokenId] = metadataCID;
+        tokenOwnerMap[tokenId] = createdBy;
+        basicPriceMap[tokenId] = basicPrice;
+        inviteCommissionMap[tokenId] = inviteCommission;
+        tokenOwnByMap[createdBy].push(tokenId);
+    }
+
+    function mintNFT(
+        uint256 tokenId,
+        uint256 amount,
+        string memory metadataCID
+    ) public payable whenNotPaused {
+        require(bytes(tokenURIMap[tokenId]).length > 0, "token not create yet");
+        uint256 basicPrice = basicPriceMap[tokenId];
+        require(
+            msg.value >= basicPrice * amount,
+            "insufficient funds for mintNFT"
+        );
+        address createdBy = _msgSender();
+
+        _mint(createdBy, tokenId, amount, "");
+        userTotalMintCountMap[createdBy] += amount;
+        mintMetadataCIDArrayMap[tokenId].push(metadataCID);
+
+        uint256 inviteCommission = inviteCommissionMap[tokenId];
+
+        uint256 inviterBalanceDelta = 0;
+        address inviter = inviteByMap[createdBy];
+        if (inviter != address(0)) {
+            inviterBalanceDelta = (inviteCommission * msg.value) / 10000;
+            inviterBalanceMap[inviter] += inviterBalanceDelta;
+        }
+
+        uint256 platformCommissionDelta = (platformCommission * msg.value) /
+            10000;
+        platformCommissionBalance += platformCommissionDelta;
+        tokenVaultMap[tokenId] +=
+            msg.value -
+            (inviterBalanceDelta + platformCommissionDelta);
+    }
+
     function addTokenItem(uint256 tokenId, string memory itemCID) public {
         address createdBy = _msgSender();
         require(
@@ -163,33 +224,6 @@ contract Web3VitePress is ERC1155, Ownable, Pausable, ERC1155Supply {
         return tokenURI;
     }
 
-    function createToken(
-        uint256 basicPrice,
-        uint256 inviteCommission,
-        string memory metadataCID
-    ) public payable whenNotPaused {
-        require(bytes(metadataCID).length > 0, "metadataCID is empty");
-        require(
-            inviteCommission <= 1000,
-            "inviteCommission must smaller than 10%"
-        );
-        require(
-            msg.value >= createTokenPrice,
-            "insufficient funds for createToken"
-        );
-
-        address createdBy = _msgSender();
-
-        uint256 tokenId = tokenIdCounter.current();
-        tokenIdCounter.increment();
-
-        tokenURIMap[tokenId] = metadataCID;
-        tokenOwnerMap[tokenId] = createdBy;
-        basicPriceMap[tokenId] = basicPrice;
-        inviteCommissionMap[tokenId] = inviteCommission;
-        tokenOwnByMap[createdBy].push(tokenId);
-    }
-
     function updateToken(
         uint256 tokenId,
         uint256 basicPrice,
@@ -210,40 +244,6 @@ contract Web3VitePress is ERC1155, Ownable, Pausable, ERC1155Supply {
         tokenURIMap[tokenId] = metadataCID;
         basicPriceMap[tokenId] = basicPrice;
         inviteCommissionMap[tokenId] = inviteCommission;
-    }
-
-    function mintNFT(
-        uint256 tokenId,
-        uint256 amount,
-        string memory metadataCID
-    ) public payable whenNotPaused {
-        require(bytes(tokenURIMap[tokenId]).length > 0, "token not create yet");
-        uint256 basicPrice = basicPriceMap[tokenId];
-        require(
-            msg.value >= basicPrice * amount,
-            "insufficient funds for mintNFT"
-        );
-        address createdBy = _msgSender();
-
-        _mint(createdBy, tokenId, amount, "");
-        userTotalMintCountMap[createdBy] += amount;
-        mintMetadataCIDArrayMap[tokenId].push(metadataCID);
-
-        uint256 inviteCommission = inviteCommissionMap[tokenId];
-
-        uint256 inviterBalanceDelta = 0;
-        address inviter = inviteByMap[createdBy];
-        if (inviter != address(0)) {
-            inviterBalanceDelta = (inviteCommission * msg.value) / 10000;
-            inviterBalanceMap[inviter] += inviterBalanceDelta;
-        }
-
-        uint256 platformCommissionDelta = (platformCommission * msg.value) /
-            10000;
-        platformCommissionBalance += platformCommissionDelta;
-        tokenVaultMap[tokenId] +=
-            msg.value -
-            (inviterBalanceDelta + platformCommissionDelta);
     }
 
     function _beforeTokenTransfer(

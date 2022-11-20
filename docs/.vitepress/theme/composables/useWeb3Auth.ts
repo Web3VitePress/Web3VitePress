@@ -30,6 +30,9 @@ init({
   ]
 })
 
+export const parseEther = val => ethers.utils.parseEther(val)
+
+
 export const useWeb3Auth = () => {
   const { connectWallet, connectingWallet, setChain, connectedChain, connectedWallet } = $(useOnboard())
 
@@ -48,6 +51,11 @@ export const useWeb3Auth = () => {
       connectedWallet.provider,
       'any'
     )
+  })
+
+  const walletAddress = $computed(() => {
+    if (!ethersProvider) return null
+    return ethersProvider.provider.selectedAddress
   })
 
   const initContract = (key, isWrite = false) => {
@@ -72,8 +80,10 @@ export const useWeb3Auth = () => {
   }
 
   return $$({
+    parseEther,
     connectedChain,
     connectedWallet,
+    walletAddress,
     doConnect,
     initContract,
   })
