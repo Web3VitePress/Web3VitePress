@@ -19,7 +19,7 @@ export default {
       }
     ],
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/NftTopBest/Web3VitePress' },
+      { icon: 'github', link: 'https://github.com/Web3VitePress/Web3VitePress' },
       { icon: 'twitter', link: 'https://twitter.com/web3hackerninja' },
       { icon: 'discord', link: 'https://discord.gg/wpc9ZP3bBG' },
     ]
