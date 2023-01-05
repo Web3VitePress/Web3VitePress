@@ -9,6 +9,31 @@
     "inputs": [
       {
         "indexed": true,
+        "internalType": "uint256",
+        "name": "blogId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "createdBy",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "articleCID",
+        "type": "string"
+      }
+    ],
+    "name": "AddArticle",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
         "internalType": "address",
         "name": "account",
         "type": "address"
@@ -27,6 +52,49 @@
       }
     ],
     "name": "ApprovalForAll",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "blogId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "createdBy",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "string",
+        "name": "articleCID",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "mintType",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "mintMetadataCID",
+        "type": "string"
+      }
+    ],
+    "name": "MintNFT",
     "type": "event"
   },
   {
@@ -168,21 +236,153 @@
     "type": "event"
   },
   {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "blogId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "createdBy",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "description",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "image",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "CID",
+        "type": "string"
+      }
+    ],
+    "name": "UpsertBlog",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "ADD_ARTICLE_PRICE",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "INVITE_COMMISSION",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "MINT_PRICE",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "PLATFORM_COMMISSION",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "UPSERT_BLOG_PRICE",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "tokenId",
+        "name": "blogId",
         "type": "uint256"
       },
       {
         "internalType": "string",
-        "name": "itemCID",
+        "name": "articleCID",
         "type": "string"
       }
     ],
-    "name": "addTokenItem",
+    "name": "addArticle",
     "outputs": [],
-    "stateMutability": "nonpayable",
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "articleCIDArrMap",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -234,18 +434,12 @@
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "basicPriceMap",
+    "inputs": [],
+    "name": "blogIdCounter",
     "outputs": [
       {
         "internalType": "uint256",
-        "name": "",
+        "name": "_value",
         "type": "uint256"
       }
     ],
@@ -256,28 +450,11 @@
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "basicPrice",
+        "name": "",
         "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "inviteCommission",
-        "type": "uint256"
-      },
-      {
-        "internalType": "string",
-        "name": "metadataCID",
-        "type": "string"
       }
     ],
-    "name": "createToken",
-    "outputs": [],
-    "stateMutability": "payable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "createTokenPrice",
+    "name": "bloggerVaultMap",
     "outputs": [
       {
         "internalType": "uint256",
@@ -311,11 +488,6 @@
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "tokenId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
         "name": "start",
         "type": "uint256"
       },
@@ -325,60 +497,7 @@
         "type": "uint256"
       }
     ],
-    "name": "getMintMetadataCIDList",
-    "outputs": [
-      {
-        "internalType": "string[]",
-        "name": "arr_",
-        "type": "string[]"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "tokenId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "start",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "limit",
-        "type": "uint256"
-      }
-    ],
-    "name": "getTokenItems",
-    "outputs": [
-      {
-        "internalType": "string[]",
-        "name": "arr_",
-        "type": "string[]"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "start",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "limit",
-        "type": "uint256"
-      }
-    ],
-    "name": "getTokenList",
+    "name": "getBlogList",
     "outputs": [
       {
         "internalType": "string[]",
@@ -387,47 +506,13 @@
       },
       {
         "internalType": "uint256[]",
-        "name": "totalMintCounts",
+        "name": "totalSupplys",
         "type": "uint256[]"
       },
       {
-        "internalType": "uint256[]",
-        "name": "mintMetadataCIDList",
-        "type": "uint256[]"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "owner",
-        "type": "address"
-      }
-    ],
-    "name": "getTokenListByOwner",
-    "outputs": [
-      {
-        "internalType": "uint256[]",
-        "name": "tokenIds",
-        "type": "uint256[]"
-      },
-      {
-        "internalType": "string[]",
-        "name": "tokenURIs",
-        "type": "string[]"
-      },
-      {
-        "internalType": "uint256[]",
-        "name": "totalMintCounts",
-        "type": "uint256[]"
-      },
-      {
-        "internalType": "uint256[]",
-        "name": "mintMetadataCIDList",
-        "type": "uint256[]"
+        "internalType": "string[][]",
+        "name": "articleCIDArr",
+        "type": "string[][]"
       }
     ],
     "stateMutability": "view",
@@ -447,25 +532,6 @@
         "internalType": "address",
         "name": "",
         "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "inviteCommissionMap",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
       }
     ],
     "stateMutability": "view",
@@ -518,31 +584,7 @@
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "mintMetadataCIDArrayMap",
-    "outputs": [
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "tokenId",
+        "name": "blogId",
         "type": "uint256"
       },
       {
@@ -552,7 +594,17 @@
       },
       {
         "internalType": "string",
-        "name": "metadataCID",
+        "name": "mintType",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "articleCID",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "mintMetadataCID",
         "type": "string"
       }
     ],
@@ -564,6 +616,25 @@
   {
     "inputs": [],
     "name": "owner",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "ownerMap",
     "outputs": [
       {
         "internalType": "address",
@@ -589,19 +660,6 @@
         "internalType": "bool",
         "name": "",
         "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "platformCommission",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
       }
     ],
     "stateMutability": "view",
@@ -714,6 +772,25 @@
   {
     "inputs": [
       {
+        "internalType": "string",
+        "name": "numString",
+        "type": "string"
+      }
+    ],
+    "name": "str2uint",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
         "internalType": "bytes4",
         "name": "interfaceId",
         "type": "bytes4"
@@ -725,43 +802,6 @@
         "internalType": "bool",
         "name": "",
         "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "tokenIdCounter",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "_value",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "tokenItemsCIDArrayMap",
-    "outputs": [
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
       }
     ],
     "stateMutability": "view",
@@ -799,50 +839,12 @@
         "type": "uint256"
       }
     ],
-    "name": "tokenOwnerMap",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
     "name": "tokenURIMap",
     "outputs": [
       {
         "internalType": "string",
         "name": "",
         "type": "string"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "tokenVaultMap",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
       }
     ],
     "stateMutability": "view",
@@ -890,91 +892,25 @@
   {
     "inputs": [
       {
-        "internalType": "string",
-        "name": "profileCID",
-        "type": "string"
+        "internalType": "string[]",
+        "name": "blogInfoArr",
+        "type": "string[]"
       }
     ],
-    "name": "updateProfile",
+    "name": "upsertBlog",
     "outputs": [],
-    "stateMutability": "nonpayable",
+    "stateMutability": "payable",
     "type": "function"
   },
   {
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "tokenId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "basicPrice",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "inviteCommission",
-        "type": "uint256"
-      },
-      {
-        "internalType": "string",
-        "name": "metadataCID",
-        "type": "string"
-      }
-    ],
-    "name": "updateToken",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "tokenId",
+        "name": "blogId",
         "type": "uint256"
       }
     ],
     "name": "uri",
-    "outputs": [
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "userProfileAddressList",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "name": "userProfileMap",
     "outputs": [
       {
         "internalType": "string",

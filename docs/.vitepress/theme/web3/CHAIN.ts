@@ -7,13 +7,6 @@ const gitBranch = import.meta.env.VITE_VERCEL_GIT_COMMIT_REF
 console.log('====> gitBranch :', gitBranch)
 export const CHAIN_ID = chainIdMap[gitBranch] || '0x7ab7'
 export const CHAIN_MAP = {
-  '0x4': {
-    chainId: '0x4',
-    chainName: 'Rinkeby Test Network',
-    blockExplorerUrls: ['https://rinkeby.etherscan.io/'],
-    nativeCurrency: { name: 'Rinkeby Ether', symbol: 'RIN', decimals: 18 },
-    rpcUrls: ['https://rinkeby.infura.io/v3/'],
-  },
   '0x5': {
     chainId: '0x5',
     chainName: 'Goerli Test Network',
@@ -80,7 +73,7 @@ export const CHAIN_MAP = {
 
 export const CHAIN_CONTRACT_MAP = {
   Web3VitePress: {
-    '0x7ab7': '0xC7ce19577C040f9807f0Fdf1C7c64eEea5c137bB',
+    '0x7ab7': '0xc6eD496eaFAaCD3254adD3e62Cd3f1D87b8d89Ac',
   },
 }
 

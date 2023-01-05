@@ -23,9 +23,9 @@ init({
     {
       id: chainId,
       token: 'tFIL',
-      label: 'Filecoin Wallaby',
-      rpcUrl: 'https://wallaby.node.glif.io/rpc/v0',
-      blockExplorerUrl: 'https://explorer.glif.io/?network=wallaby'
+      label: 'Filecoin - Wallaby testnet',
+      rpcUrl: 'https://wallaby.node.glif.io/rpc/v1',
+      blockExplorerUrl: 'https://wallaby.filfox.info'
     }
   ]
 })
