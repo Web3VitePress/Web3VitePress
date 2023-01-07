@@ -1,14 +1,18 @@
 
 export default {
-  title: 'Web3VitePress',
-  description: 'Publish your article as new NFT, and sell ERC1155 NFT token via FVM',
+  title: 'SellX3',
+  description: 'Buidlers now can Sell anything in Web3 Verse with easy and freedom',
   vue: {
-    reactivityTransform: true
+    reactivityTransform: './theme',
   },
   themeConfig: {
     nav: [
       { text: 'Blog', link: '/blog',  activeMatch: '/config/' },
     ],
+    footer: {
+      message: 'Copyright © 2023 SellX3.com. All rights reserved.',
+      copyright: 'Made with ❤️ by <a href="https://github.com/Web3HackerDAO" target="_blank">Web3HackerDAO</a>'
+    },
     sidebar: [
       {
         text: 'Blog',

@@ -1,28 +1,49 @@
 ---
 layout: home
 
-title: Web3VitePress
-titleTemplate: Vite & Vue Powered Web3 Static Site Generator
+title: SellX3
+titleTemplate: Buidlers now can Sell anything in Web3 Verse with easy and freedom
 
 hero:
-  name: Web3VitePress
-  text: Vite & Vue Powered Web3 Static Site Generator
-  tagline: Simple, powerful, and performant. Meet the modern SSG framework you've always wanted. Make your life with Web3 && IPFS easy!
+  name: SellX3
+  text: Web3 small business done with SellX3
+  tagline: With SellX3, anyone can build their own small business in Web3 with some clicks and even with the freedom to customize their whole web3 DApp!
+  image:
+    src: /sellx3.png
+    alt: SellX3
   actions:
     - theme: brand
       text: Get Started
-      link: /blog/guide
+      link: /blog/getting-started
     - theme: alt
       text: View on GitHub
       link: https://github.com/Web3VitePress/Web3VitePress
-
+  
 features:
-  - title: "Your markdown pin on to IPFS"
-    details: Pin your markdown docs on to IPFS with only one Button to Click.
-  - title: NFT as donation/support
-    details: Every post can be an ERC1155 NFT that web3 citizens can mint NFT to support you.
-  - title: With the power of FVM
-    details: The NFT contract publish on FVM, so that user can use FileCoin as payment
-  - title: Fully static yet still dynamic
-    details: Go wild with true SSG + SPA architecture. Static on page load, but engage users with 100% interactivity from there.
+  - title: Your creation on blockchain
+    icon: 
+      src: /icons/blockchain.svg
+    details: Put your creation on to blockchain with only one Button to Click.
+  - title: NFT as membership card
+    icon:
+      src: /icons/vip.svg
+    details: Every buidler own an ERC1155 NFT that web3 citizens can mint NFT as payment.
+  - title: The freedom that you can't imagenation
+    icon:
+      src: /icons/customize.svg
+    details: The whole DApp is open-source that you can do whatever you want for your web3 verse.
+  - title: Broad Integration
+    icon:
+      src: /icons/gears.svg
+    details: We supports TypeScript, Scoped CSS, CSS Modules, Vue3, Tailwind, Markdown, and any other npm packages.
+  - title: SEO Enabled
+    icon:
+      src: /icons/seo.svg
+    details: Automatic sitemaps, RSS feeds, pagination and collections take the pain out of SEO and syndication. It just works!
+  - title: Community
+    icon:
+      src: /icons/community.svg
+    details: VitePress is an open source project powered by hundreds of contributors making thousands of individual contributions.
+
 ---
+
