@@ -27,9 +27,9 @@ export default {
       ]
     },
     nav: [
-      { text: 'Discover', link: '/discover',  activeMatch: '/discover' },
-      { text: 'Blog', link: '/blog',  activeMatch: '/blog' },
-      { text: 'Guide', link: '/guide',  activeMatch: '/guide' },
+      // { text: 'Discover', link: '/discover',  activeMatch: '/discover' },
+      { text: 'Blog', link: 'https://medium.com/@web3hackerdao' },
+      { text: 'Guide', link: '/guide/getting-started',  activeMatch: '/guide' },
       { text: 'Pricing', link: '/pricing',  activeMatch: '/pricing' },
       { text: 'About', link: '/about',  activeMatch: '/about' },
     ],
@@ -39,10 +39,9 @@ export default {
     },
     sidebar: [
       {
-        text: 'Blog',
+        text: 'Guide',
         items: [
-          { text: 'Getting Started', link: '/blog/getting-started' },
-          { text: 'Guide', link: '/blog/guide' },
+          { text: 'Getting Started', link: '/guide/getting-started' },
         ]
       }
     ],
@@ -54,13 +53,21 @@ export default {
     locales: {
       '/zh/': {
         nav: [
-          { text: '发现', link: '/zh/discover',  activeMatch: '/zh/discover' },
-          { text: '博客', link: '/zh/blog',  activeMatch: '/zh/blog' },
+          // { text: '发现', link: '/zh/discover',  activeMatch: '/zh/discover' },
+          { text: '博客', link: 'https://mp.weixin.qq.com/mp/appmsgalbum?__biz=Mzk0NDM5NzkwNg==&action=getalbum&album_id=2741406345877012482&scene=173&from_msgid=2247483826&from_itemidx=1&count=3&nolastread=1#wechat_redirect'},
           { text: '指南', link: '/zh/guide',  activeMatch: '/zh/guide' },
           { text: '价格', link: '/zh/pricing',  activeMatch: '/zh/pricing' },
           { text: '关于', link: '/zh/about',  activeMatch: '/zh/about' },
         ],
-         footer: {
+        sidebar: [
+          {
+            text: '指南',
+            items: [
+              { text: '开始', link: '/zh/guide/getting-started' },
+            ]
+          }
+        ],
+        footer: {
           message: '©2023 SellX3.com 版权所有。',
           copyright: '由 <a href="https://github.com/Web3HackerDAO" target="_blank">Web3HackerDAO</a> 带着 ❤️  制作'
         },

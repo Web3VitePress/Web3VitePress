@@ -13,7 +13,7 @@ hero:
   actions:
     - theme: brand
       text: 立即开始
-      link: /blog/getting-started
+      link: /guide/getting-started
     - theme: alt
       text: 在 GitHub 查看源码
       link: https://github.com/Web3VitePress/Web3VitePress

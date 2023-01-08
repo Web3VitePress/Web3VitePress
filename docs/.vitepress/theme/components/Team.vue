@@ -17,11 +17,10 @@ import {
       </template>
     </VPTeamPageTitle>
     <div class="flex flex-col max-w-4xl gap-3 mx-auto mb-16">
-      <h2 class="text-3xl font-bold text-gray-800">
+      <h2 class="text-3xl font-bold ">
         {{ $frontmatter.team.subTitle }}
-
       </h2>
-      <p class="text-lg leading-relaxed text-slate-500">
+      <p class="text-lg leading-relaxed">
         {{ $frontmatter.team.subDescription }}
       </p>
     </div>
