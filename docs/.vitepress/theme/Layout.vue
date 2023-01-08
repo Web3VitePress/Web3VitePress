@@ -1,8 +1,9 @@
 <script setup>
 import DefaultTheme from 'vitepress/theme'
 import Web3 from './components/Web3.vue'
-import HomeFeaturesBefore from './components/HomeFeaturesBefore.vue'
-import HomeFeaturesAfter from './components/HomeFeaturesAfter.vue'
+import Slogan from './components/Slogan.vue'
+import CAT from './components/CAT.vue'
+import Pricing from './components/Pricing.vue'
 const { Layout } = DefaultTheme
 </script>
 
@@ -14,10 +15,11 @@ const { Layout } = DefaultTheme
       </ClientOnly>
     </template>
     <template #home-features-before>
-      <HomeFeaturesBefore />
+      <Slogan v-if="$frontmatter.slogan" />
+      <Pricing v-if="$frontmatter.pricing" />
     </template>
     <template #home-features-after>
-      <HomeFeaturesAfter />
+      <CAT v-if="$frontmatter.cat" />
     </template>
   </Layout>
 </template>
