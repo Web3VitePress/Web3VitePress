@@ -55,7 +55,7 @@ export default {
         nav: [
           // { text: '发现', link: '/zh/discover',  activeMatch: '/zh/discover' },
           { text: '博客', link: 'https://mp.weixin.qq.com/mp/appmsgalbum?__biz=Mzk0NDM5NzkwNg==&action=getalbum&album_id=2741406345877012482&scene=173&from_msgid=2247483826&from_itemidx=1&count=3&nolastread=1#wechat_redirect'},
-          { text: '指南', link: '/zh/guide',  activeMatch: '/zh/guide' },
+          { text: '指南', link: '/zh/guide/getting-started',  activeMatch: '/zh/guide' },
           { text: '价格', link: '/zh/pricing',  activeMatch: '/zh/pricing' },
           { text: '关于', link: '/zh/about',  activeMatch: '/zh/about' },
         ],
