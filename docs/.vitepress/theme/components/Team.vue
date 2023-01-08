@@ -1,4 +1,4 @@
-<script setup>
+<script setup lnag="ts">
 import {
   VPTeamPage,
   VPTeamPageTitle,
