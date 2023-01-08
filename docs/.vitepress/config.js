@@ -22,8 +22,8 @@ export default {
     siteTitle: false,
     localeLinks: {
       items: [
-        { text: 'English', link: '/' },
-        { text: '中文', link: '/zh/'},
+        { text: 'English', link: '/', activeMatch: '/' },
+        { text: '中文', link: '/zh/', activeMatch: '/zh/'},
       ]
     },
     nav: [
@@ -34,7 +34,7 @@ export default {
       { text: 'About', link: '/about',  activeMatch: '/about' },
     ],
     footer: {
-      message: 'Copyright © 2023 SellX3.com. All rights reserved.',
+      message: '©2023 SellX3.com All rights reserved.',
       copyright: 'Made with ❤️ by <a href="https://github.com/Web3HackerDAO" target="_blank">Web3HackerDAO</a>'
     },
     sidebar: [
@@ -50,6 +50,21 @@ export default {
       { icon: 'github', link: 'https://github.com/Web3VitePress/Web3VitePress' },
       { icon: 'twitter', link: 'https://twitter.com/web3hackerninja' },
       { icon: 'discord', link: 'https://discord.gg/wpc9ZP3bBG' },
-    ]
+    ],
+    locales: {
+      '/zh/': {
+        nav: [
+          { text: '发现', link: '/zh/discover',  activeMatch: '/zh/discover' },
+          { text: '博客', link: '/zh/blog',  activeMatch: '/zh/blog' },
+          { text: '指南', link: '/zh/guide',  activeMatch: '/zh/guide' },
+          { text: '价格', link: '/zh/pricing',  activeMatch: '/zh/pricing' },
+          { text: '关于', link: '/zh/about',  activeMatch: '/zh/about' },
+        ],
+         footer: {
+          message: '©2023 SellX3.com 版权所有。',
+          copyright: '由 <a href="https://github.com/Web3HackerDAO" target="_blank">Web3HackerDAO</a> 带着 ❤️  制作'
+        },
+      }
+    }
   }
 }
