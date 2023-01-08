@@ -2,7 +2,7 @@
 import { withBase } from 'vitepress'
 </script>
 <template>
-  <div class="max-w-6xl pt-6 mx-auto mt-10">
+  <div class="max-w-6xl px-6 pt-6 mx-auto mt-10 lg:px-0">
     <h2 class="text-center ">{{ $frontmatter.worksWith.title }}</h2>
     <div class="flex flex-wrap items-center justify-center gap-8 mt-10 md:gap-20">
       <img v-for="item in $frontmatter.worksWith.items" v-key="item.src" :src="withBase(item.src)" />

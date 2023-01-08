@@ -16,7 +16,7 @@ import {
         {{ $frontmatter.team.description }}
       </template>
     </VPTeamPageTitle>
-    <div class="flex flex-col max-w-4xl gap-3 mx-auto mb-16">
+    <div class="flex flex-col max-w-4xl gap-3 px-6 mx-auto mb-16 lg:px-0">
       <h2 class="text-3xl font-bold ">
         {{ $frontmatter.team.subTitle }}
       </h2>
