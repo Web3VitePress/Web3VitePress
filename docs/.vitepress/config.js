@@ -15,7 +15,7 @@ export default {
     }
   },
   vue: {
-    reactivityTransform: './theme',
+    reactivityTransform: true,
   },
   themeConfig: {
     logo: '/logo.png',
