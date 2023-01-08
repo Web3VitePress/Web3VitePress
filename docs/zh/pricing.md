@@ -1,5 +1,6 @@
 ---
 layout: home
+title: 价格
 
 pricing:
   title: 价格

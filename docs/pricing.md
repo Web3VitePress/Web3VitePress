@@ -1,6 +1,8 @@
 ---
 layout: home
 
+title: Pricing
+
 pricing:
   title: Pricing
   description: Simple & Predictable pricing. No Surprises.

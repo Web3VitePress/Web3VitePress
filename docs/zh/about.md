@@ -1,5 +1,6 @@
 ---
 layout: home
+title: 关于
 
 team:
   title: 关于
