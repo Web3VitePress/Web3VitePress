@@ -5,7 +5,6 @@ title: SellX3
 titleTemplate: Buidlers now can Sell anything in Web3 Verse with easy and freedom
 
 hero:
-  name: SellX3
   text: Web3 small business done with SellX3
   tagline: With SellX3, anyone can build their own small business in Web3 with some clicks and even with the freedom to customize their whole web3 DApp!
   image:
@@ -18,7 +17,11 @@ hero:
     - theme: alt
       text: View on GitHub
       link: https://github.com/Web3VitePress/Web3VitePress
-  
+
+slogan:
+  title: Everything you need to start a web3 business
+  description: SellX3 comes with batteries included. It takes the best parts of state-of-the-art tools and adds its own innovations.
+
 features:
   - title: Your creation on blockchain
     icon: 
@@ -45,5 +48,20 @@ features:
       src: /icons/community.svg
     details: VitePress is an open source project powered by hundreds of contributors making thousands of individual contributions.
 
+worksWith:
+  title: Works with your bussiness
+  items:
+    - src: /icons/blog.svg
+    - src: /icons/video.svg
+    - src: /icons/music.svg
+    - src: /icons/idea.svg
+    - src: /icons/book.svg
+    - src: /icons/sneaker.svg
+  
+cat:
+  title: Start your Web3 Business Now
+  description: With some clicks and start selling in seconds.
+  btnTxt: Get Started
+  btnLink: /guide/getting-started
 ---
 
