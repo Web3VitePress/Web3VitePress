@@ -11,19 +11,23 @@ const { Layout } = DefaultTheme
 
 <template>
   <Layout>
-    <ClientOnly>
-      <template #aside-outline-after>
+    <template #aside-outline-after>
+      <ClientOnly>
         <Web3 />
-      </template>
-      <template #home-features-before>
+      </ClientOnly>
+    </template>
+    <template #home-features-before>
+      <ClientOnly>
         <Slogan v-if="$frontmatter.slogan" />
         <Pricing v-if="$frontmatter.pricing" />
         <Team v-if="$frontmatter.team" />
         <Blog v-if="$frontmatter.blog" />
-      </template>
-      <template #home-features-after>
+      </ClientOnly>
+    </template>
+    <template #home-features-after>
+      <ClientOnly>
         <CAT v-if="$frontmatter.cat" />
-      </template>
-    </ClientOnly>
+      </ClientOnly>
+    </template>
   </Layout>
 </template>
