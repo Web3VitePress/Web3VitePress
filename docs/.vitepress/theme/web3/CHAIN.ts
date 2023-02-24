@@ -1,4 +1,4 @@
-import Web3VitePress from './abis/Web3VitePress.json'
+import Web3VitePressV1 from './abis/Web3VitePressV1.json'
 
 const chainIdMap = {
   'vitepress': '0x7ab7',
@@ -72,11 +72,11 @@ export const CHAIN_MAP = {
 }
 
 export const CHAIN_CONTRACT_MAP = {
-  Web3VitePress: {
-    '0x7ab7': '0xc6eD496eaFAaCD3254adD3e62Cd3f1D87b8d89Ac',
+  Web3VitePressV1: {
+    '0x7ab7': '0x2FC7d0466c37f720921b8994339CcE1d8aEA0d0C',
   },
 }
 
 export const CHAIN_CONTRACT_ABI_MAP = {
-  Web3VitePress
+  Web3VitePressV1
 }

@@ -23,8 +23,7 @@ export default {
         items: [
           { text: 'Getting Started', link: '/guide/' },
           { text: 'Step 1: Write your blog', link: '/guide/1.write-your-blog' },
-          { text: 'Step 2: Generate metadata', link: '/guide/2.generate-metadata' },
-          { text: 'Step 3: Create article NFT', link: '/guide/3.create-token-for-your-article' },
+          { text: 'Step 2: Generate NFT', link: '/guide/2.generate-nft-for-your-article' },
         ]
       }],
       '/demo-blog/': [

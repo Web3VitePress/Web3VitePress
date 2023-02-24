@@ -1,6 +1,5 @@
 ---
 basicPrice: 0.001
-inviteCommission: 6
 name: A doodle
 description: This is the doodle NFT
 image: ./assets/doodle.png
