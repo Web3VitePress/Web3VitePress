@@ -1,4 +1,8 @@
 ---
+basicPrice: 0.001
+inviteCommission: 10
+name: A clonex
+description: This is the clonex NFT
 image: ./assets/clonex.png
 ---
 
