@@ -15,7 +15,7 @@ const main = async () => {
       excerpt_separator: '',
     });
 
-    const { data, excerpt, path } = file;
+    const { data, excerpt } = file;
     const contents = removeMd(excerpt)
       .trim()
       .split(/\r\n|\n|\r/);
@@ -31,7 +31,7 @@ const main = async () => {
                 .replace(/\s{2,}/g, '')
                 .trim()
 
-              
+    console.log(`====> upload image to ipfs: ${data.image}`)
     const image = await client.storeBlob(new Blob([fs.readFileSync(`./docs/blog/${data.image}`)]))
     const contentCID = await client.storeBlob(new Blob([fs.readFileSync(`./docs/blog/${blog}`)]))
     const metadata = {
@@ -42,7 +42,7 @@ const main = async () => {
         contentCID,
       }
     }
-
+    console.log(`====> store blog to ipfs: ${name}`)
     const metadataCID = await client.storeBlob(new Blob([JSON.stringify(metadata, null, 2)], {
       type: "application/json",
     }))
@@ -58,6 +58,7 @@ const main = async () => {
   blogsArr = blogsArr.filter(item => item.metadataCID)
 
   fs.writeFileSync('./data.json', JSON.stringify(blogsArr), 'utf-8');
+  console.log(`====> generate cid success`)
 }
 
 main()

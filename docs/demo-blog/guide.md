@@ -1,17 +1,19 @@
 ---
 contractAddress: 0xC7ce19577C040f9807f0Fdf1C7c64eEea5c137bB
-basicPrice: 0.0001
+basicPrice: 0.01
+inviteCommission: 1
 description: "The article will guide you to make your blog to be a NFT that content store on IPFS.Step. 1: Write your blogCreate your new blog articl in the blog folder.Step. 2: Generate blog IPFS CIDnode generateCID.jsThis command will publish your blog article on to IPFS and auto generate new blog article's CID and store them into the data.json.You can find your blog article's CID and copy it into your article's frontmatter field"
-title: 指引你为你的博客创建一个 NFT
+title: Guide you to create a NFT for your blog
+image: ./guide.jpg
 imageCID: bafkreicp4smgidzdwbc7hazo43dvnopxmwlajjjcjvsfl574d5pq5vd64e
 contentCID: bafkreiex7aahucycag35k7ejx2vnqpl7teda4jrjkhwvga4ttgljqrvn64
 ---
 
-# 指引你为你的博客创建一个 NFT
+# Guide you to create a NFT for your blog
 
-本文将指引你设置你的博客作为一个 NFT 存储在 IPFS 上。
+The article will guide you to make your blog to be a NFT that content store on IPFS.
 
-## Step. 1: 写你的博客内容
+## Step. 1: Write your blog
 
 Create your new blog articl in the blog folder.
 
