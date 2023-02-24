@@ -21,17 +21,16 @@ init({
   },
   chains: [
     {
-      id: chainId,
+      id: '0xc45',
       token: 'tFIL',
-      label: 'Filecoin - Wallaby testnet',
-      rpcUrl: 'https://wallaby.node.glif.io/rpc/v1',
-      blockExplorerUrl: 'https://wallaby.filfox.info'
-    }
+      label: 'Hyperspace',
+      rpcUrl: 'https://api.hyperspace.node.glif.io/rpc/v1',
+      blockExplorerUrl: 'https://hyperspace.filfox.info/en'
+    },
   ]
 })
 
 export const parseEther = val => ethers.utils.parseEther(val)
-
 
 export const useWeb3Auth = () => {
   const { connectWallet, connectingWallet, setChain, connectedChain, connectedWallet } = $(useOnboard())
