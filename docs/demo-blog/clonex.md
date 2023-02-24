@@ -4,6 +4,7 @@ inviteCommission: 10
 name: A clonex
 description: This is the clonex NFT
 image: ./assets/clonex.png
+metadataCID: bafkreigyh5ne7fghg3itmqiihrhfjr6yfrmatnorn256tzgwpffgif352a
 ---
 
 # CloneX
