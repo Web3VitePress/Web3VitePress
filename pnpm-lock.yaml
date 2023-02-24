@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@headlessui/vue': ^1.7.4
+  '@heroicons/vue': ^2.0.16
   '@web3-onboard/core': ^2.10.1
   '@web3-onboard/injected-wallets': ^2.4.0
   '@web3-onboard/vue': ^2.3.1
@@ -23,6 +24,7 @@ specifiers:
 
 dependencies:
   '@headlessui/vue': 1.7.4_vue@3.2.45
+  '@heroicons/vue': 2.0.16_vue@3.2.45
   '@web3-onboard/core': 2.10.1
   '@web3-onboard/injected-wallets': 2.4.0
   '@web3-onboard/vue': 2.3.1_vue@3.2.45
@@ -1335,6 +1337,14 @@ packages:
     engines: {node: '>=10'}
     peerDependencies:
       vue: ^3.2.0
+    dependencies:
+      vue: 3.2.45
+    dev: false
+
+  /@heroicons/vue/2.0.16_vue@3.2.45:
+    resolution: {integrity: sha512-saVAExLlGu6epqmS543qeWd/UOJUxpTJyK9aXeFGqS3VIW8X7yyJQmUGT40A38gBEAxMOdTdH9jFSh8sjPFM7A==}
+    peerDependencies:
+      vue: '>= 3'
     dependencies:
       vue: 3.2.45
     dev: false

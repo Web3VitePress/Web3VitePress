@@ -5,7 +5,7 @@ const chainIdMap = {
 }
 const gitBranch = import.meta.env.VITE_VERCEL_GIT_COMMIT_REF
 console.log('====> gitBranch :', gitBranch)
-export const CHAIN_ID = chainIdMap[gitBranch] || '0x7ab7'
+export const CHAIN_ID = chainIdMap[gitBranch] || '0x13881'
 export const CHAIN_MAP = {
   '0x5': {
     chainId: '0x5',
@@ -74,6 +74,7 @@ export const CHAIN_MAP = {
 export const CHAIN_CONTRACT_MAP = {
   Web3VitePressV1: {
     '0x7ab7': '0x2FC7d0466c37f720921b8994339CcE1d8aEA0d0C',
+    '0x13881': '0xb170dC19fce49364b38a9B0290f48Fc856936209',
   },
 }
 
