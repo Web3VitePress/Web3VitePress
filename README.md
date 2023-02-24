@@ -1,52 +1,39 @@
+<p align='center'>
+  <img src='./screenshot.png' alt='Web3VitePress' width='600'/>
+</p>
 
-# Guide you to create a NFT for your blog
+<p align='center'>
+Web3VitePress
+Vite & Vue Powered Web3 Static Site Generator
+</p>
 
-The article will guide you to make your blog to be a NFT that content store on IPFS.
+<br>
 
-## Step. 1: Write your blog
+<p align='center'>
+  <a href="https://web3-vite-press.vercel.app/">Live Demo</a>
+</p>
 
-Create your new blog articl in the blog folder.
+<br>
 
-## Step. 2: Generate blog NFT image and content IPFS CID
+## Features
 
-```sh
-node generateCID.js
-```
+- Your markdown pin on to IPFS: Pin your markdown docs on to IPFS with only one Button to Click.
+- NFT as donation/support: Every post can be an ERC1155 NFT that web3 citizens can mint NFT to support you.
+- With the power of FVM: The NFT contract publish on FVM, so that user can use FileCoin as payment
+- Fully static yet still dynamic: Go wild with true SSG + SPA architecture. Static on page load, but engage users with 100% interactivity from there.
 
-This command will publish your blog article on to IPFS and auto generate new blog article's CID and store them into the `data.json`.
+## Guide
 
-You can find your blog article's CID and copy it into your article's `frontmatter` field
+<https://web3-vite-press.vercel.app/guide/>
 
-```md
----
-contractAddress: xxxx
-imageCID: yyyy
-contentCID: zzzz
----
+## Mint NFT Demo URL
 
-```
+<https://web3-vite-press.vercel.app/demo-blog/clonex.html>
 
-## Step. 3: CreateToken for your new blog article
+## Screenshot
 
-```sh
-npm run dev
-```
+![Mint NFT](./docs/guide/assets/mint-nft.png)
 
-Navigate to your blog page, and you will find the `CreateToken` button on the right sidebar.
+![Waiting](./docs/guide/assets/waiting.png)
 
-Click it will show a dialog and input the field you missing then click `submit` button.
-
-Add the `CreateToken` result into your blog article's `frontmatter` field.
-
-```md
----
-contractAddress: xxxx
-CID: yyyy
-tokenId: zzzz
----
-
-```
-
-## Step. 4: Your reader can mint the article NFT to support you
-
-Your reader now can see the `mint nft` button after they `connect wallet` on the right sidebar.
+![Success](./docs/guide/assets/success.png)
