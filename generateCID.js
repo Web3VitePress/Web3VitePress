@@ -3,14 +3,16 @@ const matter = require('gray-matter')
 const removeMd = require('remove-markdown')
 const { NFTStorage, File, Blob } = require('nft.storage')
 require('dotenv').config()
+const folder = process.env.folder
 
 const client = new NFTStorage({ token: process.env.NFT_STORAGE_TOKEN })
 
 const main = async () => {
-  let blogs = fs.readdirSync('./docs/blog');
+  const blogDir = `./docs/${folder}`
+  let blogs = fs.readdirSync(blogDir);
   blogs = blogs.filter(item => item.endsWith('.md'))
   let blogsArr = await Promise.all(blogs.map(async (blog) => {
-    const file = matter.read(`./docs/blog/${blog}`, {
+    const file = matter.read(`${blogDir}/${blog}`, {
       excerpt: true,
       excerpt_separator: '',
     });
@@ -32,8 +34,8 @@ const main = async () => {
                 .trim()
 
     console.log(`====> upload image to ipfs: ${data.image}`)
-    const image = await client.storeBlob(new Blob([fs.readFileSync(`./docs/blog/${data.image}`)]))
-    const contentCID = await client.storeBlob(new Blob([fs.readFileSync(`./docs/blog/${blog}`)]))
+    const image = await client.storeBlob(new Blob([fs.readFileSync(`${blogDir}/${data.image}`)]))
+    const contentCID = await client.storeBlob(new Blob([fs.readFileSync(`${blogDir}/${blog}`)]))
     const metadata = {
       name,
       description,
