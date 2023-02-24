@@ -75,6 +75,7 @@ export const CHAIN_CONTRACT_MAP = {
   Web3VitePressV1: {
     '0x7ab7': '0x2FC7d0466c37f720921b8994339CcE1d8aEA0d0C',
     '0x13881': '0xb170dC19fce49364b38a9B0290f48Fc856936209',
+    '0xc45': '0x859b5D835cb718c0ab892Eef7F5419f1aEc3fc78',
   },
 }
 

@@ -8,7 +8,8 @@ const folder = process.env.folder
 const client = new NFTStorage({ token: process.env.NFT_STORAGE_TOKEN })
 
 const contractAddressMap = {
-  'mumbai': '0xb170dC19fce49364b38a9B0290f48Fc856936209'
+  'mumbai': '0xb170dC19fce49364b38a9B0290f48Fc856936209',
+  'hyperspace': '0x859b5D835cb718c0ab892Eef7F5419f1aEc3fc78'
 }
 const chainMap = {
   'hardhat': {
@@ -83,26 +84,26 @@ const processOneArticle = async (blog, blogDir) => {
     return
   }
 
-  // const name = data.name
-  // const description = data.description
-  // console.log(`====> upload image to ipfs: ${data.image}`)
-  // const image = await client.storeBlob(new Blob([fs.readFileSync(`${blogDir}/${data.image}`)]))
-  // const contentCID = await client.storeBlob(new Blob([fs.readFileSync(`${blogDir}/${blog}`)]))
-  // const metadata = {
-  //   name,
-  //   description,
-  //   image,
-  //   properties: {
-  //     contentCID,
-  //   }
-  // }
-  // console.log(`====> store blog to ipfs: ${blog}`)
-  // const metadataCID = await client.storeBlob(new Blob([JSON.stringify(metadata, null, 2)], {
-  //   type: "application/json",
-  // }))
-  // console.log(`====> metadataCID :`, metadataCID)
+  const name = data.name
+  const description = data.description
+  console.log(`====> upload image to ipfs: ${data.image}`)
+  const image = await client.storeBlob(new Blob([fs.readFileSync(`${blogDir}/${data.image}`)]))
+  const contentCID = await client.storeBlob(new Blob([fs.readFileSync(`${blogDir}/${blog}`)]))
+  const metadata = {
+    name,
+    description,
+    image,
+    properties: {
+      contentCID,
+    }
+  }
+  console.log(`====> store blog to ipfs: ${blog}`)
+  const metadataCID = await client.storeBlob(new Blob([JSON.stringify(metadata, null, 2)], {
+    type: "application/json",
+  }))
+  console.log(`====> metadataCID :`, metadataCID)
 
-  const metadataCID = 'bafkreicde7hco6ga64o4jnqhthclk2eb4ytny7sgvmrnznb2hhhpszgn24'
+  // const metadataCID = 'bafkreicde7hco6ga64o4jnqhthclk2eb4ytny7sgvmrnznb2hhhpszgn24'
   const basicPrice = ethers.utils.parseEther(data.basicPrice + '')
   const value = ethers.utils.parseEther('0.01')
   const contractWriter = getContractWriter()

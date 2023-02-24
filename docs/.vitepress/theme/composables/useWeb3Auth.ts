@@ -4,7 +4,7 @@ import { ethers } from "ethers";
 import { CHAIN_CONTRACT_MAP, CHAIN_CONTRACT_ABI_MAP } from '../web3/CHAIN'
 
 // const chainId = 31415
-const chainId = '0x7ab7'
+const chainId = '0xc45'
 init({
   wallets: [injectedModule()],
   accountCenter: {
@@ -73,6 +73,7 @@ export const useWeb3Auth = () => {
   )
 
   if (previouslyConnectedWallets.length > 0) {
+    console.log('====> previouslyConnectedWallets :', previouslyConnectedWallets)
     connectWallet({
       autoSelect: { label: previouslyConnectedWallets[0], disableModals: true }
     })

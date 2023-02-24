@@ -8,8 +8,8 @@ const { frontmatter } = $(useData())
 const { doConnect, connectedChain, initContract, parseEther } = $(useWeb3Auth())
 
 let errMsg = $ref('')
-let basicPrice = $ref(frontmatter.basicPrice || '')
-let tokenId = $ref(frontmatter.tokenId || '')
+let basicPrice = $computed(() => frontmatter.basicPrice)
+let tokenId = $computed(() => frontmatter.tokenId)
 
 const canMint = $computed(() => basicPrice > 0 && tokenId >= 0)
 
@@ -40,7 +40,7 @@ const doMintNFT = async () => {
 </script>
 
 <template>
-  <div class="p-2 pt-6">
+  <div class="p-2 pt-6" v-if="tokenId >= 0">
     <div v-if="connectedChain">
       <button type="button" class="btn-primary" @click="doMintNFT" v-if="canMint">Mint NFT</button>
     </div>

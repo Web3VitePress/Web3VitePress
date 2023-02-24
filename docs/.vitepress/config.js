@@ -121,6 +121,7 @@ export default defineConfig({
           { text: 'Getting Started', link: '/guide/' },
           { text: 'Step 1: Write your blog', link: '/guide/1.write-your-blog' },
           { text: 'Step 2: Generate NFT', link: '/guide/2.generate-nft-for-your-article' },
+          { text: 'Step 3: Mint NFT', link: '/guide/3.mint-nft-in-action' },
         ]
       }],
       '/demo-blog/': [
