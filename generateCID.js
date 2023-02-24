@@ -1,7 +1,7 @@
 const fs = require('fs')
 const matter = require('gray-matter')
 const removeMd = require('remove-markdown')
-const { NFTStorage, File, Blob } = require('nft.storage')
+const { NFTStorage, Blob } = require('nft.storage')
 require('dotenv').config()
 const folder = process.env.folder
 
@@ -11,7 +11,7 @@ const main = async () => {
   const blogDir = `./docs/${folder}`
   let blogs = fs.readdirSync(blogDir);
   blogs = blogs.filter(item => item.endsWith('.md'))
-  let blogsArr = await Promise.all(blogs.map(async (blog) => {
+  await Promise.all(blogs.map(async (blog) => {
     const file = matter.read(`${blogDir}/${blog}`, {
       excerpt: true,
       excerpt_separator: '',
@@ -22,8 +22,13 @@ const main = async () => {
       .trim()
       .split(/\r\n|\n|\r/);
 
-    if (data.CID) {
-      return {}
+    if (data.metadataCID) {
+      console.log(`Already have metadataCID, ignore generate for ${blog}`)
+      return 
+    }
+    if (data.tokenId) {
+      console.log(`Already have tokenId, ignore generate for ${blog}`)
+      return
     }
 
     const name = data.title || contents[0].replace(/\s{2,}/g, '').trim()
@@ -49,18 +54,10 @@ const main = async () => {
       type: "application/json",
     }))
 
-    return {
-      metadataCID,
-      metadata,
-      name,
-      description,
-      image,
-    };
+    console.log(`====> insert metadataCID for blog: ${blog}`)
+    file.data.metadataCID = metadataCID
+    fs.outputFileSync(`${blogDir}/${blog}`, file.stringify())
   }));
-  blogsArr = blogsArr.filter(item => item.metadataCID)
-
-  fs.writeFileSync('./data.json', JSON.stringify(blogsArr), 'utf-8');
-  console.log(`====> generate cid success`)
 }
 
 main()
