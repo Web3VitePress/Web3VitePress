@@ -10,10 +10,11 @@ import { HeadlessUiResolver } from 'unplugin-vue-components/resolvers'
 export default defineConfig({
   title: 'Web3VitePress',
   description: 'Vite & Vue Powered Web3 Static Site Generator',
+  ignoreDeadLinks: 'localhostLinks',
   vue: {
     reactivityTransform:  path.resolve(__dirname, 'theme'),
   },
-    vite: {
+  vite: {
     define: {
       'process.env': {},
       global: {},
