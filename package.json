@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "vitepress dev docs --open",
     "build": "vitepress build docs",
-    "serve": "vitepress serve docs",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "vitepress serve docs"
   },
   "keywords": [],
   "author": "",
@@ -15,10 +14,15 @@
   "devDependencies": {
     "autoprefixer": "^10.4.2",
     "dotenv": "^16.0.3",
+    "fs-extra": "^11.1.0",
     "gray-matter": "^4.0.3",
     "postcss": "^8.4.6",
     "remove-markdown": "^0.5.0",
     "tailwindcss": "^3.0.23",
+    "unplugin-auto-import": "^0.15.0",
+    "unplugin-icons": "^0.15.3",
+    "unplugin-vue-components": "^0.24.0",
+    "unplugin-vue-macros": "^1.9.1",
     "vitepress": "1.0.0-alpha.35",
     "vue": "^3.2.45"
   },
@@ -30,6 +34,7 @@
   },
   "dependencies": {
     "@headlessui/vue": "^1.7.4",
+    "@heroicons/vue": "^2.0.16",
     "@web3-onboard/core": "^2.10.1",
     "@web3-onboard/injected-wallets": "^2.4.0",
     "@web3-onboard/vue": "^2.3.1",

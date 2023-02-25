@@ -1,5 +1,9 @@
 ---
+basicPrice: 0.001
+name: A doodle
+description: This is the doodle NFT
 image: ./assets/doodle.png
+metadataCID: bafkreie6rwqw75ax2uqbg33vcpir6k5dh55xtrnbd5ku5ohrhvfko75akm
 ---
 
 # Doodle

@@ -1,11 +1,11 @@
-import Web3VitePress from './abis/Web3VitePress.json'
+import Web3VitePressV1 from './abis/Web3VitePressV1.json'
 
 const chainIdMap = {
   'vitepress': '0x7ab7',
 }
 const gitBranch = import.meta.env.VITE_VERCEL_GIT_COMMIT_REF
 console.log('====> gitBranch :', gitBranch)
-export const CHAIN_ID = chainIdMap[gitBranch] || '0x7ab7'
+export const CHAIN_ID = chainIdMap[gitBranch] || '0x13881'
 export const CHAIN_MAP = {
   '0x5': {
     chainId: '0x5',
@@ -72,11 +72,13 @@ export const CHAIN_MAP = {
 }
 
 export const CHAIN_CONTRACT_MAP = {
-  Web3VitePress: {
-    '0x7ab7': '0xc6eD496eaFAaCD3254adD3e62Cd3f1D87b8d89Ac',
+  Web3VitePressV1: {
+    '0x7ab7': '0x2FC7d0466c37f720921b8994339CcE1d8aEA0d0C',
+    '0x13881': '0xb170dC19fce49364b38a9B0290f48Fc856936209',
+    '0xc45': '0x859b5D835cb718c0ab892Eef7F5419f1aEc3fc78',
   },
 }
 
 export const CHAIN_CONTRACT_ABI_MAP = {
-  Web3VitePress
+  Web3VitePressV1
 }

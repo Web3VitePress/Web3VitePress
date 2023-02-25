@@ -1,140 +1,72 @@
-<script setup>
+<script setup lang="ts">
+import { CheckIcon } from '@heroicons/vue/24/outline'
 import { useData } from 'vitepress'
 import { useWeb3Auth } from '../composables/useWeb3Auth'
 import DialogWide from './DialogWide.vue'
-import { NFTStorage, Blob } from 'nft.storage'
 
 const { frontmatter } = $(useData())
-const { doConnect, connectedChain, initContract, walletAddress, parseEther } = $(useWeb3Auth())
+const { doConnect, connectedChain, initContract, parseEther } = $(useWeb3Auth())
 
-let msg = $ref('')
-let showCreateTokenDialog = $ref(false)
-let isLoading = $ref(false)
-let title = $ref(frontmatter.title || '')
-let description = $ref(frontmatter.description || '')
-let basicPrice = $ref(frontmatter.basicPrice || '')
-const contentCID = $computed(() => frontmatter.contentCID)
-const imageCID = $computed(() => frontmatter.imageCID)
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDIxMmZkRTRBOEFhY0RCZWE3RWFkRGNFMGU1NkI0NTFDQzdlNTM2QjYiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY2ODk1MTU2MTkwNiwibmFtZSI6IldlYjNWaXRlUHJlc3MifQ.yxdHbHZAjmjYgo2WL5G0vmRH5OdOEhvh9dWys2EVGzk'
-// const client = new NFTStorage({ token: import.meta.env.NFT_STORAGE_TOKEN })
-const client = new NFTStorage({ token })
+let errMsg = $ref('')
+let basicPrice = $computed(() => frontmatter.basicPrice)
+let tokenId = $computed(() => frontmatter.tokenId)
 
-const storeJson = async data => {
-  return await client.storeBlob(new Blob([JSON.stringify(data, null, 2)], {
-    type: "application/json",
-  }))
-}
+const canMint = $computed(() => basicPrice > 0 && tokenId >= 0)
 
-const doCreateToken = async () => {
-  let metadataCID = ''
-  isLoading = true
-  const metadata = {
-    name: title,
-    description,
-    image: imageCID,
-    properties: {
-      createdBy: walletAddress,
-      contentCID,
-    }
-  }
-  metadataCID = await storeJson(metadata)
-
-  const contractWriter = initContract('Web3VitePress', true)
-  const value = parseEther('0.0001')
-  const nftInfoArr = [
-    title,
-    description,
-    imageCID,
-    metadataCID,
-  ]
-  const tx = await contractWriter.upsertBlog(nftInfoArr, { value })
-  const rc = await tx.wait()
-  console.log(`====> rc :`, rc)
-  msg = `create blog, pls check tx: https://explorer.glif.io/wallaby/tx/${tx.hash}`
-  isLoading = false
-  // showCreateTokenDialog = false
-}
-
-const canCreateToken = $computed(() => !frontmatter.tokenId)
-
+let state = $ref('')
 let showMintNFTDialog = $ref(false)
+let txLink = $ref('')
 const doMintNFT = async () => {
+  if (showMintNFTDialog) return
+
   showMintNFTDialog = true
-  isLoading = true
-  // bafkreiapgycwszlvazlidzbbl6vkatxdikswow5ngcbbnz2seu42m5tbaq
-  const blogId = '0'
+  txLink = ''
+  state = 'minting'
   const amount = 1
-  const mintType = 'comment'
-  const articleCID = 'ipfs://bafkreiex7aahucycag35k7ejx2vnqpl7teda4jrjkhwvga4ttgljqrvn64'
-  const contractWriter = await initContract('Web3VitePress', true)
-  const data = {
-    author: walletAddress,
-    blogId, amount, mintType, articleCID
-  }
+  const contractWriter = await initContract('Web3VitePressV1', true)
   try {
-    const mintMetadataCID = await storeJson(data)
     const value = parseEther('' + basicPrice).mul(amount)
-    const tx = await contractWriter.mintNFT(blogId, amount, mintType, articleCID, mintMetadataCID, { value })
+    const tx = await contractWriter.mintNFT(tokenId, amount, { value })
     const rc = await tx.wait()
-    console.log(`====> rc :`, rc)
-    msg = `mint nft success, pls check tx: https://explorer.glif.io/wallaby/tx/${tx.hash}`
+    state = 'mint-success'
+    txLink = `https://hyperspace.filfox.info/en/tx/${tx.hash}`
   } catch (e) {
-    msg = e.data.message
+    state = 'mint-error'
+    console.log('====> e :', e)
+    errMsg = e
   }
-  isLoading = false
 }
 
 </script>
 
 <template>
-  <div class="p-2 pt-6">
+  <div class="p-2 pt-6" v-if="tokenId >= 0">
     <div v-if="connectedChain">
-      <button type="button" class="mb-2 btn-primary" @click="showCreateTokenDialog = true">Create Blog</button>
-      <button type="button" class="btn-primary" @click="doMintNFT">Mint NFT</button>
+      <button type="button" class="btn-primary" @click="doMintNFT" v-if="canMint">Mint NFT</button>
     </div>
     <button type="button" class="btn-primary" @click="doConnect" v-else>Connect Wallet</button>
   </div>
-  <DialogWide :show="showCreateTokenDialog" @close="showCreateTokenDialog = false">
-    <div v-if="isLoading" class="p-10 text-xl text-center">
-      create token now, pls wait...
-    </div>
-    <div v-else-if="msg" class="p-10 text-xl text-center">
-      {{ msg }}
-    </div>
-    <div class="p-5 space-y-8 text-lg divide-y divide-gray-200" v-else>
-      <div class="space-y-8 divide-y divide-gray-200">
-        <div>
-          <div class="grid grid-cols-1 mt-6 gap-y-6 gap-x-4 sm:grid-cols-6">
-            <!-- <FileUploaderThumbnail v-model="logo" title="Category Logo" class="sm:col-span-6" /> -->
-            <div class="sm:col-span-6">
-              <label for="title" class="block font-medium text-gray-700"> Title </label>
-              <div class="mt-1">
-                <input id="title" v-model="title" type="text" name="title" autocomplete="title" class="block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
-              </div>
-            </div>
-            <div class="sm:col-span-6">
-              <label for="description" class="block font-medium text-gray-700"> description </label>
-              <div class="mt-1">
-                <textarea id="description" v-model="description" name="description" rows="2" class="block w-full p-4 bg-white border border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500" />
-              </div>
-            </div>
+  <DialogWide :show="showMintNFTDialog" @close="showMintNFTDialog = false">
+    <div>
+      <div v-if="state === 'minting'" class="p-10 text-xl text-center">
+        mint the NFT now, pls wait...
+      </div>
+      <div v-if="state === 'mint-error'">
+        {{ errMsg }}
+      </div>
+      <div v-if="state === 'mint-success'">
+        <div class="px-10">
+          <div class="flex items-center justify-center w-12 h-12 mx-auto bg-green-100 rounded-full">
+            <CheckIcon class="w-6 h-6 text-green-600" aria-hidden="true" />
+          </div>
+          <div class="mt-3 text-center sm:mt-5">
+            <DialogTitle as="h3" class="text-base font-semibold leading-6 text-gray-900">You already mint the NFT successful</DialogTitle>
           </div>
         </div>
-      </div>
-      <div class="pt-5">
-        <div class="flex justify-end">
-          <button class="mr-4" @click="showCreateTokenDialog = false">Cancel</button>
-          <button class="btn-primary" @click="doCreateToken" :isLoading="isLoading">CreateToken</button>
+        <div class="mt-5 sm:mt-6">
+          <a :href="txLink" target="_blank" class="inline-flex justify-center w-full px-4 py-2 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:text-sm">Check Tx Detail</a>
         </div>
       </div>
-    </div>
-  </DialogWide>
-  <DialogWide :show="showMintNFTDialog" @close="showMintNFTDialog = false">
-    <div v-if="isLoading" class="p-10 text-xl text-center">
-      mint the NFT now, pls wait...
-    </div>
-    <div v-else>
-      {{ msg }}
     </div>
   </DialogWide>
 </template>

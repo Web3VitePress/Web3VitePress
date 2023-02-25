@@ -4,7 +4,7 @@ import { ethers } from "ethers";
 import { CHAIN_CONTRACT_MAP, CHAIN_CONTRACT_ABI_MAP } from '../web3/CHAIN'
 
 // const chainId = 31415
-const chainId = '0x7ab7'
+const chainId = '0xc45'
 init({
   wallets: [injectedModule()],
   accountCenter: {
@@ -21,17 +21,16 @@ init({
   },
   chains: [
     {
-      id: chainId,
+      id: '0xc45',
       token: 'tFIL',
-      label: 'Filecoin - Wallaby testnet',
-      rpcUrl: 'https://wallaby.node.glif.io/rpc/v1',
-      blockExplorerUrl: 'https://wallaby.filfox.info'
-    }
+      label: 'Hyperspace',
+      rpcUrl: 'https://api.hyperspace.node.glif.io/rpc/v1',
+      blockExplorerUrl: 'https://hyperspace.filfox.info/en'
+    },
   ]
 })
 
 export const parseEther = val => ethers.utils.parseEther(val)
-
 
 export const useWeb3Auth = () => {
   const { connectWallet, connectingWallet, setChain, connectedChain, connectedWallet } = $(useOnboard())
@@ -74,6 +73,7 @@ export const useWeb3Auth = () => {
   )
 
   if (previouslyConnectedWallets.length > 0) {
+    console.log('====> previouslyConnectedWallets :', previouslyConnectedWallets)
     connectWallet({
       autoSelect: { label: previouslyConnectedWallets[0], disableModals: true }
     })

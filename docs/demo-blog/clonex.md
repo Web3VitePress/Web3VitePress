@@ -1,5 +1,10 @@
 ---
+basicPrice: 0.001
+name: A clonex
+description: This is the clonex NFT
 image: ./assets/clonex.png
+metadataCID: bafkreicde7hco6ga64o4jnqhthclk2eb4ytny7sgvmrnznb2hhhpszgn24
+tokenId: '0'
 ---
 
 # CloneX
