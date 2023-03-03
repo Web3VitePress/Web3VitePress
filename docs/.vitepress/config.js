@@ -132,6 +132,7 @@ export default defineConfig({
           { text: 'Introduction', link: '/demo-blog/' },
           { text: 'CloneX', link: '/demo-blog/clonex' },
           { text: 'Doodle', link: '/demo-blog/doodle' },
+          { text: 'New Blog', link: '/demo-blog/new-blog' },
         ]
         }
       ],
