@@ -9,7 +9,8 @@ const client = new NFTStorage({ token: process.env.NFT_STORAGE_TOKEN })
 
 const contractAddressMap = {
   'mumbai': '0xb170dC19fce49364b38a9B0290f48Fc856936209',
-  'hyperspace': '0x859b5D835cb718c0ab892Eef7F5419f1aEc3fc78'
+  'hyperspace': '0x859b5D835cb718c0ab892Eef7F5419f1aEc3fc78',
+  'calibration': '0x558d97E41E5415620a68CF237E9469a78811F015'
 }
 const chainMap = {
   'hardhat': {
@@ -25,6 +26,13 @@ const chainMap = {
     opts: {
       chainId: 3141,
       name: 'Hyperspace'
+    }
+  },
+  'calibration': {
+    rpcUrl: 'https://api.calibration.node.glif.io/rpc/v1',
+    opts: {
+      chainId: 314159,
+      name: 'Filecoin Calibrationnet'
     }
   },
   'mumbai': {

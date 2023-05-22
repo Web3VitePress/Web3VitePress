@@ -1,12 +1,27 @@
 import Web3VitePressV1 from './abis/Web3VitePressV1.json'
 
 const chainIdMap = {
-  'vitepress': '0x7ab7',
+  'vitepress': '0x4cb2f',
 }
 const gitBranch = import.meta.env.VITE_VERCEL_GIT_COMMIT_REF
 console.log('====> gitBranch :', gitBranch)
 export const CHAIN_ID = chainIdMap[gitBranch] || '0x13881'
 export const CHAIN_MAP = {
+  "0x4cb2f": {
+    "blockExplorerUrls": [
+      "https://explorer.glif.io/calibrationnet"
+    ],
+    "chainId": "0x4cb2f",
+    "chainName": "Filecoin Calibrationnet",
+    "nativeCurrency": {
+      "decimals": 18,
+      "name": "tFIL",
+      "symbol": "tFIL"
+    },
+    "rpcUrls": [
+      "https://api.calibration.node.glif.io/rpc/v1"
+    ]
+  },
   '0x5': {
     chainId: '0x5',
     chainName: 'Goerli Test Network',
@@ -76,6 +91,7 @@ export const CHAIN_CONTRACT_MAP = {
     '0x7ab7': '0x2FC7d0466c37f720921b8994339CcE1d8aEA0d0C',
     '0x13881': '0xb170dC19fce49364b38a9B0290f48Fc856936209',
     '0xc45': '0x859b5D835cb718c0ab892Eef7F5419f1aEc3fc78',
+    '0x4cb2f': '0x558d97E41E5415620a68CF237E9469a78811F015',
   },
 }
 
