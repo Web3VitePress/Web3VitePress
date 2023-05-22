@@ -29,7 +29,7 @@ const doMintNFT = async () => {
     const tx = await contractWriter.mintNFT(tokenId, amount, { value })
     const rc = await tx.wait()
     state = 'mint-success'
-    txLink = `https://hyperspace.filfox.info/en/tx/${tx.hash}`
+    txLink = `https://calibration.filfox.info/en/tx/${tx.hash}`
   } catch (e) {
     state = 'mint-error'
     console.log('====> e :', e)
